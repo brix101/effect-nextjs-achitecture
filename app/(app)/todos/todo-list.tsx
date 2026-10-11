@@ -44,10 +44,13 @@ export function TodoList() {
           {todos.map((todo) => (
             <li
               key={todo.id}
-              className="flex items-center gap-3 rounded-md border border-gray-200 px-3 py-2"
+              className={`flex items-center gap-3 rounded-md border border-gray-200 px-3 py-2 ${
+                todo.pending ? "opacity-60" : ""
+              }`}
             >
               <button
                 onClick={() => toggle.mutate(todo.id)}
+                disabled={todo.pending}
                 className={`h-5 w-5 rounded border flex items-center justify-center text-xs ${
                   todo.completed
                     ? "bg-green-100 border-green-400 text-green-600"
@@ -63,9 +66,15 @@ export function TodoList() {
               >
                 {todo.title}
               </span>
+              {todo.pending && (
+                <span className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-full px-2 py-0.5">
+                  Saving…
+                </span>
+              )}
               <button
                 onClick={() => remove.mutate(todo.id)}
-                className="text-xs text-red-500 hover:text-red-700"
+                disabled={todo.pending}
+                className="text-xs text-red-500 hover:text-red-700 disabled:opacity-50"
               >
                 Delete
               </button>

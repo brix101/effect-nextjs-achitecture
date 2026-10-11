@@ -11,7 +11,7 @@ export class TodoService extends Context.Service<
     readonly toggle: (id: string) => Effect.Effect<Todo, NotFoundError>;
     readonly remove: (id: string) => Effect.Effect<void, NotFoundError>;
   }
->()("TodoService") {}
+>()("TodoService") { }
 
 export const TodoServiceLive = Layer.effect(
   TodoService,
@@ -21,16 +21,21 @@ export const TodoServiceLive = Layer.effect(
     return {
       list: (userId: string) => repo.findAllByUserId(userId),
 
-      create: ({ title, userId }: { title: string; userId: string }) => {
-        const todo: Todo = {
-          id: crypto.randomUUID(),
-          title,
-          completed: false,
-          userId,
-          createdAt: new Date(),
-        };
-        return repo.create(todo);
-      },
+      create: ({ title, userId }: { title: string; userId: string }) =>
+        Effect.gen(function* () {
+          // Defer impure id/date generation into the Effect so each run
+          // produces a fresh todo (instead of running at construction time).
+          const todo: Todo = yield* Effect.sync(() => ({
+            id: crypto.randomUUID(),
+            title,
+            completed: false,
+            userId,
+            createdAt: new Date(),
+          }));
+          // Simulated latency so the optimistic UI is visible.
+          yield* Effect.sleep("7 seconds");
+          return yield* repo.create(todo);
+        }),
 
       toggle: (id: string) =>
         repo.findById(id).pipe(
