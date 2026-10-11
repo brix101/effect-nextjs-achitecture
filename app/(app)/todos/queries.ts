@@ -7,7 +7,7 @@ import { runtime } from "@/app/server/runtime";
 import { getUserId } from "@/app/lib/auth";
 import { Effect } from "effect";
 import { getTodos } from "./server";
-import type { Todo } from "@/app/server/features/todo/todo.models";
+import type { Todo } from "@/app/server/features/todo/todo.schema";
 
 export async function fetchTodos(): Promise<Todo[]> {
   return runtime.runPromise(

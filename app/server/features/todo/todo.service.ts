@@ -1,7 +1,7 @@
 import { Context, Effect, Layer } from "effect";
 import { TodoRepository } from "./todo.repository";
 import { NotFoundError } from "@/app/lib/errors";
-import type { Todo } from "./todo.models";
+import type { Todo } from "./todo.schema";
 
 export class TodoService extends Context.Service<
   TodoService,

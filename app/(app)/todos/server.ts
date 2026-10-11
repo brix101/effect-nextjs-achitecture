@@ -3,7 +3,7 @@
 
 import { Effect } from "effect";
 import { TodoService } from "@/app/server/features/todo/todo.service";
-import type { Todo } from "@/app/server/features/todo/todo.models";
+import type { Todo } from "@/app/server/features/todo/todo.schema";
 
 export const getTodos = (userId: string): Effect.Effect<Todo[], never, TodoService> =>
   Effect.gen(function* () {

@@ -5,7 +5,7 @@ import { TodoService } from "@/app/server/features/todo/todo.service";
 import { Effect } from "effect";
 import { CreateTodoInput, ToggleTodoInput, DeleteTodoInput } from "./schemas";
 import type { ApiResponse } from "@/app/lib/api-response";
-import type { Todo } from "@/app/server/features/todo/todo.models";
+import type { Todo } from "@/app/server/features/todo/todo.schema";
 
 const _createTodo = action
   .schema(CreateTodoInput)

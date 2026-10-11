@@ -5,7 +5,7 @@ import { ProjectService } from "@/app/server/features/project/project.service";
 import { Effect } from "effect";
 import { CreateProjectInput } from "./schemas";
 import type { ApiResponse } from "@/app/lib/api-response";
-import type { Project } from "@/app/server/features/project/project.models";
+import type { Project } from "@/app/server/features/project/project.schema";
 
 const _createProject = action
   .schema(CreateProjectInput)

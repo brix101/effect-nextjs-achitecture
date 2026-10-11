@@ -1,6 +1,6 @@
 import { Context, Effect, Layer } from "effect";
 import { ProjectRepository } from "./project.repository";
-import type { Project } from "./project.models";
+import type { Project } from "./project.schema";
 
 export class ProjectService extends Context.Service<
   ProjectService,

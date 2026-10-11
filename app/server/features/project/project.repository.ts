@@ -1,6 +1,6 @@
 import { Context, Effect, Layer, Ref } from "effect";
 import { Database } from "@/app/server/shared/infrastructure/database";
-import type { Project } from "./project.models";
+import type { Project } from "./project.schema";
 
 export class ProjectRepository extends Context.Service<
   ProjectRepository,

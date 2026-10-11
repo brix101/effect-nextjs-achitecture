@@ -57,11 +57,11 @@ app/
 │   │       └── database.ts # In-memory database service (Service + Layer)
 │   └── features/
 │       ├── todo/
-│       │   ├── todo.models.ts      # Pure types
+│       │   ├── todo.schema.ts      # Effect Schema + derived types
 │       │   ├── todo.repository.ts  # Data access (Service + Layer)
 │       │   └── todo.service.ts     # Business logic (Service + Layer)
 │       └── project/
-│           ├── project.models.ts
+│           ├── project.schema.ts
 │           ├── project.repository.ts
 │           └── project.service.ts
 │

@@ -1,6 +1,6 @@
 import { Context, Effect, Layer, Ref } from "effect";
-import type { Todo } from "@/app/server/features/todo/todo.models";
-import type { Project } from "@/app/server/features/project/project.models";
+import type { Todo } from "@/app/server/features/todo/todo.schema";
+import type { Project } from "@/app/server/features/project/project.schema";
 
 // ─── In-memory database simulating a real DB ────────────────────────────────
 // In production, this would be Drizzle/Prisma/etc.
